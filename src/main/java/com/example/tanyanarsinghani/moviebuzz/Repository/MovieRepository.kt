@@ -75,8 +75,8 @@ class MovieRepository : MovieBuzzFirstActivity {
         })
     }
 
-    fun getAll(): LiveData<List<MovieData>> {
-        return databaseClient.getAppDatabase().MovieDao().getAll()
+    fun getAll(search:String): LiveData<List<MovieData>> {
+        return databaseClient.getAppDatabase().MovieDao().getAll(search)
     }
     fun getMovieDetails(id:Int): LiveData<MovieData> {
         return databaseClient.getAppDatabase().MovieDao().getMovDetails(id)

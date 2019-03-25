@@ -1,5 +1,6 @@
 package com.example.tanyanarsinghani.moviebuzz.UI
 
+import android.arch.lifecycle.LiveData
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,8 +27,9 @@ import retrofit2.Response
         MovieAdapter.ItemClickListener {
 
         val data = ArrayList<MovieData>()
-        var search = ""
-        private lateinit var db: DatabaseClient
+    var search = "Popularity"
+    private lateinit var db: DatabaseClient
+    var datas:LiveData<List<MovieData>>?=null
 
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +37,12 @@ import retrofit2.Response
             setContentView(R.layout.activity_movie_buzz_first)
             var moviedata = MovieAPIService.create()
             db = DatabaseClient.getInstance(this)
-            var datas = MovieRepository.getInstance(db).getAll()
-            datas.observe(this@MovieBuzzFirstActivity, android.arch.lifecycle.Observer {
+            datas = MovieRepository.getInstance(db).getAll(search)
+            datas!!.observe(this@MovieBuzzFirstActivity, android.arch.lifecycle.Observer {
                 it?.let {
                     Toast.makeText(this@MovieBuzzFirstActivity,"Getting data from db", Toast.LENGTH_SHORT)
                         .show()
-                    data.clear()
+                    //data.clear()
                     data.addAll(it)
                     (mbrc.adapter as MovieAdapter).setData(it)
                     mbrc.adapter?.notifyDataSetChanged()
@@ -118,7 +120,10 @@ import retrofit2.Response
                                         data.clear()
                                         data.addAll(moviesorted.moviedatas)
                                         mbrc.adapter?.notifyDataSetChanged()
-
+                                        for(moviedatas in data.iterator())
+                                        {
+                                            moviedatas.search = search
+                                        }
                                         MovieRepository.getInstance(db).saveMovie(moviesorted.moviedatas)
 
                                         }
@@ -154,6 +159,10 @@ import retrofit2.Response
                                         data.clear()
                                         data.addAll(moviesorted.moviedatas)
                                         mbrc.adapter?.notifyDataSetChanged()
+                                        for(moviedatas in data.iterator())
+                                        {
+                                            moviedatas.search = search
+                                        }
 
                                         MovieRepository.getInstance(db).saveMovie(moviesorted.moviedatas)
 
@@ -170,6 +179,8 @@ import retrofit2.Response
                             })
 
                     }
+                    datas = MovieRepository.getInstance(db).getAll(search)
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {

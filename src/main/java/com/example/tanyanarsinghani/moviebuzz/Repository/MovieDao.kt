@@ -24,8 +24,8 @@ public interface MovieDao{
     fun insertfav(movies: MovieData):Long
 
 
-    @Query("SELECT * FROM Movies_DB ")
-    fun getAll(): LiveData<List<MovieData>>
+    @Query("SELECT * FROM Movies_DB where SEARCH LIKE :search ")
+    fun getAll(search:String): LiveData<List<MovieData>>
 
     @Query("SELECT * FROM Movies_DB where ID LIKE :id ")
     fun getMovDetails(id:Int): LiveData<MovieData>

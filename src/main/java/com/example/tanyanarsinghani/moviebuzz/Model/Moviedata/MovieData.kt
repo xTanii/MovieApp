@@ -32,6 +32,7 @@ data  class MovieData(
     @ColumnInfo(name = "Video") val video: Boolean?,
     @ColumnInfo(name = "Vote_average") val vote_average: Double?,
     @ColumnInfo(name = "Vote_count") val vote_count: Int?,
-    @ColumnInfo(name = "Favourite") var  favourite:Boolean=false
+    @ColumnInfo(name = "Favourite") var  favourite:Boolean=false,
+    @ColumnInfo(name = "Search") var  search:String?
 
 )
