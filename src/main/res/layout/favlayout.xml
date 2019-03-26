@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
 >
@@ -11,16 +11,17 @@
 
     <ImageView
             android:id="@+id/mbiv"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="228dp"
+            android:layout_height="233dp"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="34dp"
-            tools:layout_editor_absoluteY="36dp" />
+            tools:layout_editor_absoluteX="6dp"
+            android:paddingTop="20dp"
+            tools:layout_editor_absoluteY="3dp"/>
 
     <TextView
             android:text="TextView"
             android:layout_width="176dp"
-            android:layout_height="55dp"
+            android:layout_height="38dp"
             android:id="@+id/favmoviename"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="20dp"

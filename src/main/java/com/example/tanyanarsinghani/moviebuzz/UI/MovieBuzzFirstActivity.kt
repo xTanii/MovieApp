@@ -1,6 +1,7 @@
 package com.example.tanyanarsinghani.moviebuzz.UI
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -27,7 +28,7 @@ import retrofit2.Response
         MovieAdapter.ItemClickListener {
 
         val data = ArrayList<MovieData>()
-    var search = "Popularity"
+        var search = "Popularity"
     private lateinit var db: DatabaseClient
     var datas:LiveData<List<MovieData>>?=null
 
@@ -37,12 +38,13 @@ import retrofit2.Response
             setContentView(R.layout.activity_movie_buzz_first)
             var moviedata = MovieAPIService.create()
             db = DatabaseClient.getInstance(this)
+            Log.e(search,search)
             datas = MovieRepository.getInstance(db).getAll(search)
-            datas!!.observe(this@MovieBuzzFirstActivity, android.arch.lifecycle.Observer {
+            datas!!.observe(this@MovieBuzzFirstActivity, Observer {
                 it?.let {
-                    Toast.makeText(this@MovieBuzzFirstActivity,"Getting data from db", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MovieBuzzFirstActivity,"Getting data from db  "+search, Toast.LENGTH_SHORT)
                         .show()
-                    //data.clear()
+                    data.clear()
                     data.addAll(it)
                     (mbrc.adapter as MovieAdapter).setData(it)
                     mbrc.adapter?.notifyDataSetChanged()
@@ -179,6 +181,7 @@ import retrofit2.Response
                             })
 
                     }
+
                     datas = MovieRepository.getInstance(db).getAll(search)
 
                 }

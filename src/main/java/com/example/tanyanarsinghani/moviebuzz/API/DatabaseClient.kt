@@ -13,7 +13,6 @@ class DatabaseClient {
     private constructor (mCtx: Context) {
         this.mCtx = mCtx
         appDatabase = Room.databaseBuilder(mCtx, MovieDatabase::class.java!!, "MyToDos")
-            //.allowMainThreadQueries()
             .build()
     }
 
