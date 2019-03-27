@@ -78,7 +78,7 @@
     <TextView
             android:text="TextView"
             android:layout_width="353dp"
-            android:layout_height="188dp"
+            android:layout_height="wrap_content"
             android:id="@+id/movieoverview"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
