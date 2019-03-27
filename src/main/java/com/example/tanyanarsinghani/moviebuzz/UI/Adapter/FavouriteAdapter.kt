@@ -25,8 +25,8 @@ class FavouriteAdapter(var movieData: List<MovieData>, val itemClickListener : I
 
             view.setOnClickListener{
                 val intent= Intent(context, MovieDetailsActivity::class.java)
-                intent.putExtra("Text",view.favmoviename.text)
-                intent.putExtra("Image",view.mbiv.imageTintList)
+               // intent.putExtra("Text",view.favmoviename.text)
+                intent.putExtra("Image",view.favmovieimage.imageTintList)
 
 
             }
@@ -34,8 +34,8 @@ class FavouriteAdapter(var movieData: List<MovieData>, val itemClickListener : I
 
 
         var context = view.context
-        val movieposter = view.findViewById<ImageView>(R.id.mbiv)
-        var moviename = view.findViewById<TextView>(R.id.favmoviename)
+        val movieposter = view.findViewById<ImageView>(R.id.favmovieimage)
+       // var moviename = view.findViewById<TextView>(R.id.favmoviename)
 
 
     }
@@ -54,7 +54,6 @@ class FavouriteAdapter(var movieData: List<MovieData>, val itemClickListener : I
         var movieposterpath=movieData[p1].poster_path
         var myUri = Uri.parse("https://image.tmdb.org/t/p/original/" + movieposterpath)
 
-        p0.moviename.text = movieData[p1].title
         p0.bind(movieData[p1])
         Picasso.get()
             .load(myUri)

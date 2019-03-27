@@ -26,7 +26,6 @@ class MovieAdapter(var movieData: List<MovieData>, val itemClickListener : ItemC
 
             view.setOnClickListener{
                 val intent= Intent(context,MovieDetailsActivity::class.java)
-                intent.putExtra("Text",view.mbtv.text)
                 intent.putExtra("Image",view.mbiv.imageTintList)
 
 
@@ -36,7 +35,6 @@ class MovieAdapter(var movieData: List<MovieData>, val itemClickListener : ItemC
 
         var context = view.context
         val movieposter = view.findViewById<ImageView>(R.id.mbiv)
-        var moviename = view.findViewById<TextView>(R.id.mbtv)
 
 
     }
@@ -54,7 +52,6 @@ class MovieAdapter(var movieData: List<MovieData>, val itemClickListener : ItemC
         var movieposterpath=movieData[p1].poster_path
             var myUri = Uri.parse("https://image.tmdb.org/t/p/original/" + movieposterpath)
 
-        p0.moviename.text = movieData[p1].title
         p0.bind(movieData[p1])
         Picasso.get()
             .load(myUri)
