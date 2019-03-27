@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="10dp"
             app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/movieoverview"/>
+            android:layout_marginBottom="78dp" app:layout_constraintBottom_toTopOf="@+id/margin"/>
 
 
     <View
@@ -80,17 +80,14 @@
             android:layout_width="353dp"
             android:layout_height="wrap_content"
             android:id="@+id/movieoverview"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="76dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_margin="20dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/movietrailer"
-            app:layout_constraintVertical_bias="1.0"/>
+            android:layout_marginTop="63dp" app:layout_constraintTop_toBottomOf="@+id/margin"
+            android:layout_marginBottom="187dp" app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageButton
         android:id="@+id/fav11"
